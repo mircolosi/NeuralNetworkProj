@@ -1,8 +1,8 @@
 function [ SM, list_name_files ] = sim_matrix3(df)
 %SIM_MATRIX Return t.
-% This function returns two arguments: 
+% This function returns two arguments:
 % the similarity matrix based on the kolmogorov distance of the midi
-% dataset (passed by the argument df) and the vector of all the name 
+% dataset (passed by the argument df) and the vector of all the name
 % of the files in the dataset
 %% Dataset conversion
 % We convert the dataset midi files into text files used for further
@@ -22,14 +22,7 @@ authors_folders = dir(midi_folder);
 % all the subfolder of the dataset (categorized by author)
 authors_folders = authors_folders(3:end);
 
-if exist(midi_text, 'dir')
-    rmdir(midi_text, 's');
-end
-if exist(zip_folder, 'dir')
-    rmdir(zip_folder, 's');
-end
-mkdir(midi_text);
-mkdir(zip_folder);
+
 
 n_author = 0;
 
@@ -54,7 +47,6 @@ mkdir(midi_text_nometa);
 %---------------------------
 
 % ---------- converting into single-track ---------
-
 disp('Converting the files into single-track midi files');
 
 for i = 1:length(authors_folders)
@@ -63,7 +55,7 @@ for i = 1:length(authors_folders)
     
     midi_files = dir(current_folder);
     midi_files = midi_files(3:end);
-
+    
     midi_author_folder = fullfile(single_track_df, author);
     mkdir(midi_author_folder);
     
@@ -72,23 +64,22 @@ for i = 1:length(authors_folders)
             % the current file is opened and wrote as a text file
             midi = readmidi(fullfile(current_folder, midi_files(j).name));
             Notes = midiInfo(midi, 0);
-
+            
             Notes2 = Notes;
             Notes2(:,1) = ones(size(Notes,1),1);
             Notes2(:,2) = zeros(size(Notes,1),1);
             Notes2(:,4) = 100*ones(size(Notes,1),1);
-            Notes2(:,5) = linspace(1,length(Notes),length(Notes))';
-            Notes2(:,6) = ones(size(Notes,1),1)+linspace(1,length(Notes),length(Notes))';        
-
+            
             Notes2 = Notes2(:,1:6);
             midi_new = matrix2midi(Notes2,midi.ticks_per_quarter_note);
-
+            
             writemidi(midi_new, strcat(midi_author_folder,'/',midi_files(j).name));
             
         end
     end
-    
+
 end
+
 
 authors_folders = dir(single_track_df);
 % all the subfolder of the dataset (categorized by author)
@@ -126,11 +117,11 @@ for i = 1:length(authors_folders)
             
             
             text = fread(fid, Inf, '*char');
-            fprintf(fid_text,'%c',text);            
+            fprintf(fid_text,'%c',text);
             
             fclose(fid);
             fclose(fid_text);
-                        
+            
             list_name_files = vertcat(list_name_files, strcat(midi_files(j).name(1), num2str(j), '.txt'));
             n_author = n_author+1;
         end
@@ -153,13 +144,13 @@ n = 1;
 % kolmogorov distance.
 
 disp('Starting computation similarity matrix!');
-for i = 1:length(author_text_folders)               
+for i = 1:length(author_text_folders)
     % author: the name of the current author
-    author = author_text_folders(i).name; 
+    author = author_text_folders(i).name;
     % current_folder: '../MIDI_text/authorName'
     current_folder = fullfile(midi_text, author);
     % text_files: list of all the files in the current folder
-    text_files = dir(current_folder);               
+    text_files = dir(current_folder);
     text_files = text_files(3:end);
     
     disp(strcat('Converting files between author ', author));
@@ -231,7 +222,7 @@ for i = 1:length(author_text_folders)
                         a = strrep(name_text_file1, '.txt','');
                         b = strrep(name_text_file2, '.txt','');
                         
-                        % if the concatenation between 'a' and 'b' 
+                        % if the concatenation between 'a' and 'b'
                         % or 'b' and 'a' wasn't already done concatenate
                         % the two files in direct and inverse order
                         
