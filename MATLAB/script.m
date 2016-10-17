@@ -1,6 +1,6 @@
 clc; clear all; close all;
 
-addpath('/Users/mircocolosi/Documents/MATLAB/matlab-midi-master/src');
+addpath('../matlab-midi-master/src');
 
 % dataset_folder = uigetdir(pwd, 'Select DATASET folder');
 % 
