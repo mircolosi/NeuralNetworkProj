@@ -92,7 +92,9 @@ if (convert_txt == true)
             if (strfind(midi_files(j).name, '.mid'))
                 % the current file is opened and wrote as a text file
                 fid = fopen(fullfile(current_folder, midi_files(j).name));
-                file_text_name = fullfile(midi_author_folder, strcat(midi_files(j).name(1), num2str(j), '.txt'));
+                
+                %file_text_name = fullfile(midi_author_folder, strcat(midi_files(j).name, num2str(j), '.txt'));
+                file_text_name = fullfile(midi_author_folder, [midi_files(j).name(1:end-4), '.txt']);
                 fid_text = fopen(file_text_name, 'w');
                 
                 
@@ -102,7 +104,8 @@ if (convert_txt == true)
                 fclose(fid);
                 fclose(fid_text);
                 
-                list_name_files = vertcat(list_name_files, strcat(midi_files(j).name(1), num2str(j), '.txt'));
+                %list_name_files = vertcat(list_name_files, strcat(midi_files(j).name, num2str(j), '.txt'));
+                list_name_files = vertcat(list_name_files, [midi_files(j).name(1:end-4), '.txt']);
                 n_author = n_author+1;
             end
         end
@@ -115,6 +118,8 @@ list_name_files = list_name_files(2:end);
 author_text_folders = dir(midi_text);
 author_text_folders = author_text_folders(3:end);
 
+
+
 %% Computing Similarity Matrix
 % In this section we execute a double iteration of the text subfolder to
 % compute the distance of the file based on the extimation of the
@@ -124,6 +129,7 @@ SM = zeros(n_author);
 
 
 n = 1;
+achepuntosiamo=1;
 
 disp('Starting computation similarity matrix!');
 for i = 1:length(author_text_folders)
@@ -210,12 +216,13 @@ for i = 1:length(author_text_folders)
                         
                         if (~exist(fullfile(folder_cat, strcat(a, '_', b, '.txt')),'file') || ...
                                 ~exist(fullfile(inv_folder_cat, strcat(b, '_', a, '.txt')),'file'))
-                            
-                            fid_cat = fopen(fullfile(folder_cat, strcat(a, '_', b, '.txt')), 'w+');
+                            tmp_txt_file1 = fullfile(folder_cat, strcat(a, '_', b, '.txt'));
+                            fid_cat = fopen(tmp_txt_file1, 'w+');
                             textcat = vertcat(text1,text2);
                             fprintf(fid_cat, '%c', textcat);
                             fclose(fid_cat);
-                            inv_fid_cat = fopen(fullfile(inv_folder_cat, strcat(b, '_', a, '.txt')),'w+');
+                            tmp_txt_file2 = fullfile(inv_folder_cat, strcat(b, '_', a, '.txt'));
+                            inv_fid_cat = fopen(tmp_txt_file2,'w+');
                             inv_textcat = vertcat(text2,text1);
                             fprintf(inv_fid_cat, '%c', inv_textcat);
                             fclose(inv_fid_cat);
@@ -275,6 +282,10 @@ for i = 1:length(author_text_folders)
                         SM(m,n) = ds_21;
                         
                         m = m + 1;
+                        
+                        delete(tmp_txt_file2);
+                        delete(tmp_txt_file1);
+                        achepuntosiamo = achepuntosiamo +1
                         
                     end
                 end

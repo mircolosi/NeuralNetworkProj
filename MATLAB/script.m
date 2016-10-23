@@ -1,4 +1,4 @@
-clc; clear all; close all;
+clc; close all;
 
 addpath('../matlab-midi-master/src');
 
