@@ -105,7 +105,8 @@ if (convert_txt == true)
                 fclose(fid_text);
                 
                 %list_name_files = vertcat(list_name_files, strcat(midi_files(j).name, num2str(j), '.txt'));
-                list_name_files = vertcat(list_name_files, [midi_files(j).name(1:end-4), '.txt']);
+                %list_name_files = vertcat(list_name_files, [midi_files(j).name(1:end-4), '.txt']);
+                list_name_files = vertcat(list_name_files, file_text_name);
                 n_author = n_author+1;
             end
         end
