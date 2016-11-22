@@ -1,4 +1,4 @@
-function [d_vec, s_vec]  = kNNSimilaritySearch( new_instance, data_points_vec, distance_matrix, k )
+function [d_vec, s_vec]  = kNNSimilaritySearch( new_instance, data_points_vec, labels, distance_matrix, k )
 
 if (length(new_instance) ~= 2)
     disp('Error, bad instance');
@@ -19,7 +19,7 @@ if (any(bool_idx))
     disp('This new_instance is aready in the data points.');
     ni_idx = find(bool_idx);
     [d_vec, sort_idx] = sort(distance_matrix(ni_idx,:));
-    s_vec = dp_names(sort_idx);
+    s_vec = labels(sort_idx);
 else
     % Compute the distances between this file and all the others.
     % since we have the abs path of all files, this can be done
@@ -126,9 +126,11 @@ else
     
     % 09. Sort and take values
     [d_vec, sort_idx] = sort(new_distances);
-    s_vec = dp_names(sort_idx);
+    s_vec = labels(sort_idx);
 end
-    rmdir(temp_folder, 's');
+    if exist(temp_folder, 'dir')
+        rmdir(temp_folder, 's');
+    end
     d_vec = d_vec(1:k);
     s_vec = s_vec(1:k);
 end

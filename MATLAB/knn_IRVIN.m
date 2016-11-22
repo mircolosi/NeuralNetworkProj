@@ -5,7 +5,6 @@ SM = SM.SM3;
 
 %% Retrieving the name of the files
 midi_folder = uigetdir(pwd, 'Select DATASET folder');
-[parent_folder,~,~] = fileparts(midi_folder);
 authors_folders = dir(midi_folder);
 authors_folders = authors_folders(3:end);
 
@@ -20,7 +19,7 @@ for i = 1:length(authors_folders)
     for j = 1:length(author_files)
         X(i, j) = {fullfile(midi_folder,authors_folders(i).name,author_files(j).name)};
         Y(i, j) = {authors_folders(i).name};
-        N(i, j) = {[authors_folders(i).name(1),authors_folders(i).name(end),'_',int2str(j)]};
+        N(i, j) = {[authors_folders(i).name,'_',int2str(j)]};
         dataset_size = dataset_size + 1;
     end
 end
