@@ -7,7 +7,7 @@ while ischar(tline)
     tline=fgetl(fid);
 end
 fclose(fid);
-
+SM = zeros(length(file_list));
 zip_folder = '../MIDI_zip/';
 for i = 1:length(file_list)
     [path, name, ~] = fileparts(file_list{i});
@@ -17,7 +17,7 @@ for i = 1:length(file_list)
         [~,other_author,~] = fileparts(other_path);
         zip_file1 = fullfile(zip_folder, author, [name, '.zip']);
         zip_file2 = fullfile(zip_folder, other_author, [other_name, '.zip']);
-        zip_file12 = fullfile(zip_folder,[author,'_',other_author], [name,'_', other_name, '.zip']);
+        zip_file12 = fullfile(zip_folder,[author,'_',other_author], [name,'_', other_name, '.zip'])
         zip_file21 = fullfile(zip_folder,[other_author,'_',author], [other_name,'_', name, '.zip']);
         
         
@@ -53,5 +53,6 @@ for i = 1:length(file_list)
     end
 end
 
+SM
 
 
