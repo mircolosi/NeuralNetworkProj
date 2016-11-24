@@ -4,7 +4,7 @@ SM = load('ST_SM.mat');
 SM = SM.SM3;
 
 %% Retrieving the name of the files
-midi_folder = uigetdir(pwd, 'Select DATASET folder');
+midi_folder = fullfile(pwd,'..','MIDI_TrainingSet_ST');
 authors_folders = dir(midi_folder);
 authors_folders = authors_folders(3:end);
 
@@ -54,9 +54,14 @@ X_new = horzcat(X_new,reshape(N_new',test_set_size,1));
 
 Y_new = cell(length(X_new),2);
 for i = 1:length(X_new)
-   [dists, labels] = kNNSimilaritySearch(X_new(i), X, Y, SM, 3);
-   Y_new{i,1} = dists;
-   Y_new{i,2} = labels;
+    [dists, labels] = kNNSimilaritySearch(X_new(i,:), X, Y, SM, 3);
+    Y_new{i,1} = dists;
+    Y_new{i,2} = labels;
+    
+    cnt = i * 100 / length(X_new);
+    if mod(cnt,5) == 0
+        disp([int2str(cnt),'% completed']);
+    end
 end
 
 save('test_ST.mat', 'Y_new');

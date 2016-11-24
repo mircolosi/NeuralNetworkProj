@@ -120,7 +120,7 @@ else
         
         cnt = i * 100 / length(dp_paths);
         if mod(cnt,5) == 0
-            disp([int2str(cnt),'% completed']);
+%             disp([int2str(cnt),'% completed']);
         end
     end
     
