@@ -34,8 +34,8 @@ else
         % 07. Accumulate distances in a row-vector called 'new_distances'
         % 08. Close, clean and delete generated files    
     % 09. Sort and take values
-    disp('This new_instance is not in the data points.');
-    disp('Evaluating distances with data_points...');
+%     disp('This new_instance is not in the data points.');
+%     disp('Evaluating distances with data_points...');
     
     % Temp folder where all the stuff is stored - REMOVE AT THE END
     if ~exist(temp_folder, 'dir')

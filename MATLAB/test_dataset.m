@@ -52,7 +52,10 @@ end
 X_new = reshape(X_new',test_set_size,1);
 X_new = horzcat(X_new,reshape(N_new',test_set_size,1));
 
+
+%% Gathering new labels
 Y_new = cell(length(X_new),2);
+tic
 for i = 1:length(X_new)
     [dists, labels] = kNNSimilaritySearch(X_new(i,:), X, Y, SM, 3);
     Y_new{i,1} = dists;
@@ -63,5 +66,13 @@ for i = 1:length(X_new)
         disp([int2str(cnt),'% completed']);
     end
 end
-
+toc
 save('test_ST.mat', 'Y_new');
+
+amp=10; 
+fs=20500;  % sampling frequency
+duration=0.3;
+freq=880;
+values=0:1/fs:duration;
+a=amp*sin(2*pi* freq*values);
+sound(a)
