@@ -63,25 +63,25 @@ Y_FULL = reshape(Y_FULL',dataset_size,1);
 
 
 
-%% TEST SETS
-% Single Track with K = 3
-[X_new_ST_3, Y_new_ST_3] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 3);
-
-% Single Track with K = 5
-[X_new_ST_5, Y_new_ST_5] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 5);
-
-% Single Track with K = 7
-[X_new_ST_7, Y_new_ST_7] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 7);
-
-
-% Full Track with K = 3
-[X_new_Full_3, Y_new_Full_3] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_FULL, Y_FULL, SM_FULL, 3);
-
-% Full Track with K = 5
-[X_new_Full_5, Y_new_Full_5] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_FULL, Y_FULL, SM_FULL, 5);
+% %% TEST SETS
+% % Single Track with K = 3
+% [X_new_ST_3, Y_new_ST_3] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 3);
+% 
+% % Single Track with K = 5
+% [X_new_ST_5, Y_new_ST_5] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 5);
+% 
+% % Single Track with K = 7
+% [X_new_ST_7, Y_new_ST_7] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_ST, Y_ST, SM_ST, 7);
+% 
+% 
+% % Full Track with K = 3
+% [X_new_Full_3, Y_new_Full_3] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_FULL'), X_FULL, Y_FULL, SM_FULL, 3);
+% 
+% % Full Track with K = 5
+% [X_new_Full_5, Y_new_Full_5] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_FULL'), X_FULL, Y_FULL, SM_FULL, 5);
 
 % Full Track with K = 7
-[X_new_Full_7, Y_new_Full_7] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_ST'), X_FULL, Y_FULL, SM_FULL, 7);
+[X_new_Full_7, Y_new_Full_7] = retrieveNewLabels(fullfile(pwd,'..','MIDI_TrainingSet_FULL'), X_FULL, Y_FULL, SM_FULL, 7);
 
 %%
 amp=10; 

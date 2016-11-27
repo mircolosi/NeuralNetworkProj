@@ -35,12 +35,12 @@ for i = 1:length(X_new)
     Y_new{i,2} = labels;
     
     cnt = i * 100 / length(X_new);
-    if mod(cnt,5) == 0
+    if mod(cnt,1) == 0
         disp([int2str(cnt),'% completed']);
     end
 end
 toc
-save(name_file, 'X_new', 'Y_new');
+save(name_file{:}, 'X_new', 'Y_new');
 
 end
 
