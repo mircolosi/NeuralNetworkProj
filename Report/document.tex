@@ -1,0 +1,139 @@
+% !TeX spellcheck = en_GB
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Font and spacing
+\usepackage{fontspec}
+\usepackage{lettrine}
+\usepackage{color}
+
+
+\title{ Neural Networks: \\
+	Project Report.}
+\author{Irvin Aloise, mat. 1392066\\
+	Mirco Colosi, mat. xxxxxxx}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Introduction}
+	\lettrine[lines=3]{S}{}imultaneous Localization and Mapping is one of the main tools used in mobile robotics. Solving this computational problem, agents are able to build a map of an unknown environment and to locate themselves in this environment. In general, agents that performs SLAM cannot rely on powerful sensors like GPS, but they have to solve this problem using indoor-friendly sensors, e.g. cameras, gyroscope, laser-scanners.
+	
+	In this project, it has been modified a SLAM system based on a \textbf{single RGBD camera}. In particular, it was initially designed to use only image features to solve the problem and build the environment map and it has been upgraded embedding feature points' normals in the optimization process. In this way, the system became more robust with no loss in terms of computational speed.
+	
+	In the next Session it will be briefly explained the concepts behind this approach and some results will be presented.
+	
+	\section{System overview}
+	The RGB-D system in analysis has been built using ROS and OpenCV and it has three main components:
+	\begin{itemize}
+		\item \textbf{Camera tracker}: allows to record the camera motion inside the world.
+		\item \textbf{Frame manager}: manipulates the map triggering loop closures.
+		\item \textbf{Solver}: runs the well known least-square optimization algorithm.
+	\end{itemize}
+	Before going deeper in the analysis, it is good to underline how an RGB-D camera works. The one used here is an \textit{ASUS Xtion}, connected to the PC through a ROS node. It has a standard RGB camera which captures $320 \times 240$ coloured images and a structured light camera that is able to gather depth information in indoor environment; this sensor is able to run at $30 Hz$.
+	
+	\textit{Frame Manager} was based only on features correspondences and it had to go through the following core steps:
+	\begin{enumerate}
+		\item \textbf{Detection}: interesting points (e.g. corners) are discovered on the RGB images based on the Harris algorithm.
+		\item \textbf{Extraction}: interesting points are then used by a \textit{Brief Descriptor} in order to characterize those corners and make them actual \textit{features}.
+		\item \textbf{Matching}: features are compared to previous frame's ones and a \textit{brute-force matcher} creates \textit{point correspondences}.
+	\end{enumerate}
+	Those \textit{image points} are in $(u,v,d)$ coordinates in the \textbf{image frame}, where the $d$ component is retrieved using the depth map gathered directly using  the sensor.
+	
+	Moreover, it is possible to retrieve also the \textit{camera points}, which are expressed in the \textbf{world frame}, e.g. $(x,y,z)$. This points are calculated through a transformation	$T_{camera \rightarrow world}$. 
+	
+	Given this really simple overview, it is possible to define the least-square optimization problem: its target is to estimate the best $T_{camera \rightarrow world}$, using the re-projection error between image points and world points. Obviously the camera matrix and all its parameters are already known.
+	
+	As it has been said before, the \textit{solver} will perform all the computations needed. Originally, it had to evaluate the following entities:
+	\begin{enumerate}
+		\item \textbf{Error} between image points and projected world points. It is a $(3 \times 1)$ vector defined as follows:
+		\begin{equation}
+			\textbf{e}_k = K \cdot (T \cdot \textbf{p}_{world}) - \textbf{p}_{image}
+		\end{equation}
+		where $K$ represents the camera matrix.
+		\item \textbf{Jacobian} is a $(3\times6)$ matrix computed using the chain rule as follows:
+		\begin{equation}
+			J_k = J_p K J_t
+		\end{equation}
+		where
+		\begin{flalign}
+		\label{Jp}
+		J_p = 
+			\begin{pmatrix}
+			\nicefrac{1}{z} & 0 & \nicefrac{-x}{z} \\
+			0 & \nicefrac{1}{z} & \nicefrac{-x}{z} \\
+			0 & 0 & 1
+			\end{pmatrix} \qquad \\
+		J_t = \big[I | 2 \cdot skew(T \cdot \textbf{p}_{wolrd})\big]
+		\label{Jt}
+		\end{flalign}
+	\end{enumerate}
+	After those initial evaluation, it is possible to compute the $H_k$ matrix and the $\textbf{b}_k$ vector for the current point correspondence as follows 
+	\begin{align}
+		H_k = J_k^T I J_k \\
+		\textbf{b}_k = J_k^T I \textbf{e}_k
+	\end{align}
+	Obviously, those must be evaluated for each point correspondence in order to retrieve the increment $\Delta T$, in formulae:
+	\begin{align}
+		H &= \sum_k^K H_k \\
+		\textbf{b} &= \sum_k^K \textbf{b}_k \\
+		\Delta T &= \frac{\textbf{b}}{H} 
+	\end{align}
+	
+	Starting from this point, now it will be presented the  upgrade brought by the project in analysis.
+	
+	As it has been anticipated before, the main idea is to embed information about feature points' \textbf{normals} into the solver. They are estimated computing \textbf{eigenvectors} of the covariance matrix $\mathcal{C}_p$ of each feature point. Namely, given $\mathcal{C}_p$, the \textit{eigenvector corresponding to the smallest eigenvalue} represents the best estimation of the point's normal.
+	
+	After this computation, both \textit{error} and \textit{Jacobian} had been modified. In fact, now the \textbf{error} is a $(6 \times 1)$ vector built as follows:
+	
+	\begin{equation}
+		\textbf{e}_k^{new} = 
+			\begin{pmatrix}
+				\textbf{e}_k^{old} \\
+				\cmidrule(lr){1-1}
+				\textbf{e}_k^{norm}
+			\end{pmatrix}
+	\end{equation}
+	where
+	\begin{align}
+		\textbf{e}_k^{old} &= K \cdot (T \cdot \textbf{p}_{world}) - \textbf{p}_{image} \\
+		\textbf{e}_k^{norm} &= (R \textbf{n}) - \textbf{n}
+		\label{normal error}
+	\end{align}
+	In formula \ref{normal error}, matrix $R$ represents the rotational part of matrix $T$, since normals are direction and the translational part of $T$ does not affect them.
+	
+	The \textbf{Jacobian} is now a $(6\times6)$ matrix, composed as follows:
+	\begin{equation}
+		J_k^{new} = 
+		\begin{pmatrix}
+		J_k^{old}  \\
+		\cmidrule(lr){1-1}
+		J_k^{norm}
+		\end{pmatrix}
+	\end{equation}
+	where
+	\begin{align}
+		J_k^{old} &= J_p K J_t \\
+		J_k^{norm} &= [0_{(3\times 3)} | 2 \cdot skew(R \textbf{n})]
+	\end{align}
+	where matrices $J_p$ and $J_t$ are already specified in equations \ref{Jp} and \ref{Jt}.
+	
+	Once retrieved those new quantities, the remaining part have not been modified (e.g. matrix $H$ and $\textbf{b}$ vector).
+	
+	In \hyperref[fig:out]{figure 1} is shown the output of the updated system using a real dataset. It is possible to appreciate the fact that floor and walls are better shaped: only in low light conditions some error occurs (e.g. some "holes" in the floor).
+	
+	Obviously this method can be further improved in many aspects and it is not a state-of-art SLAM system. For example it is possible to deeply embed normals in the algorithm to reduce the influence that light conditions have on performances, or to take advantage of multithreading technique to speed-up the whole machine.
+	
+
+\end{document}
