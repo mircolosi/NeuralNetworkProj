@@ -1,6 +1,6 @@
 clc; clear all; close all;
 
-SM = load('new_born_SM.mat');
+SM = load('ST_SM.mat');
 SM = SM.SM3;
 
 %% Retrieving the name of the files

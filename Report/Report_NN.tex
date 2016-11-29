@@ -50,7 +50,14 @@
 	\end{itemize}
 	Those features are given as input to several machine-learning algorithm - \textit{Naive Bayes}, \textit{VFI}, \textit{J48}, \textit{PART}, \textit{NNge} and \textit{JRip} - to extract a genre prediction for new MIDI instances.
 	
-	\textbf{Chet} in his work \textit{Classification of Musical Playing Styles using MIDI Information} [ref: Gnegy, Chet N. "Classification of Musical Playing Styles using MIDI Information."] instead tries to return a \textit{style} classification of the instances, intended as a functional description of a specific instruments in a song. More precisely, the styles used are the following: 
+	\begin{figure}[!h]
+		\centering
+		\label{fig:audio_and_NCD}
+		\includegraphics[scale=0.5]{misc/audio_and_ncd.png}
+		\caption{A block scheme representing Cataltepe et al.'s approach}
+	\end{figure}
+	
+	\textbf{Chet} in his work [ref: Gnegy, Chet N. "Classification of Musical Playing Styles using MIDI Information."] instead tries to return a \textit{style} classification of the instances, intended as a functional description of a specific instruments in a song. More precisely, the styles used are the following: 
 	\begin{itemize}
 		\item \textbf{Bass}: the song has a predominant single line of deep tones and the other harmonic structure are just supporters.
 		\item \textbf{Lead}: a melodic line, e.g. vocal performance or guitar solo.
@@ -58,5 +65,28 @@
 		\item \textbf{Acoustic}: this style is characterized by multiple individual notes - or melody lines - often performed on the same instruments.
 	\end{itemize}
 	A large variety of audio features is used in this work, spanning from simple statistics - \textit{mean pitch}, \textit{pitch standard derivation} and many others - to very complex ones - \textit{coverage}, \textit{liricality} and several others. Many different machine-learning algorithm are then used in order to assign a \textit{style} to new instances, e.g. \textit{decision tree}, \textit{logistic regression}, \textit{k-NN}, \textit{QDA} and \textit{SVM}.
-
+	
+	An approach very similar to what it has been developed in this project is used by \textbf{Cataltepe et al.} [ref: Cataltepe, Zehra, Yusuf Yaslan, and Abdullah Sonmez. "Music genre classification using MIDI and audio features." EURASIP Journal on Advances in Signal Processing 2007.1 (2007): 1-8.]: they used a combined approach that takes the advantage both of MIDI \textit{and} audio features - those ones evaluated after a conversion into simple audio files of the MIDI pieces. As it is possible to appreciate in \hyperref[fig:audio_and_NCD]{Figure 1}, in order to classify the instances, they used the \textit{NCD}  (Normalized Compression Distance) - which is based on the same concept of the \textit{similarity measure} employed in this project - and then a k-NN classifier together with another classifier that acts on audio features. The final vote takes is represented by the weighted majority vote resulting from the two classifiers.
+	
+	Now that it has been completed an overview of the other approaches used by scientific community, it is possible to better analyse the techniques used in this project.
+	
+	
+	\section{Classification using Similarity Metric}
+	\lettrine[nindent=0em,lines=2]{T}{}his Section contains a brief overview of what it has been done in our project. It has been developed a k-NN classifier that uses a  \textit{Similarity Metric} based on Kolmogorov complexity in order to classify MIDI files by author. 
+	
+	Firstly there will be an introduction on the mathematical concepts behind the Similarity Metric and then it will be provided details about the actual implementation and results.
+	
+	\subsection{Similarity Metric based on Kolmogorov Complexity}
+	The core idea behind this \textit{Similarity metric} is the Kolmogorov complexity [ref: Li, Ming, \& Paul Vit\`{a}nyi. An introduction to Kolmogorov complexity and its applications. Springer Science and Business Media, 2009.]: this can be intended as the length of the file's ultimate compression. More precisely, any object can be coded into strings, denoted by $x$ and $K(x) = |x|$ represents the number of bits needed to computationally retrieve $x$.
+	
+	Hence, it is possible to define the \textbf{similarity metric} between two files $x$ and $y$ as follows:
+	
+	\begin{align}
+		\label{eq:d1}
+		d_1(x,y) &= \frac{K(x|y) + K(y|x)}{K(x,y)} \\
+		\label{eq:d2}
+		d_2(x,y) &= \frac{\max{\left(K(x|y),K(y|x)\right)}}{\max{\left(K(x),K(y)\right)}}
+	\end{align}
+	
+	Both definitions require the \textit{conditional complexity} $K(x|y)$ but this quantity cannot be evaluated in close form. Thus, the conditional complexity is approximated as $K(x|y) \approx K(x,y) - K(y)$, where $K(x,y)$ is computed very intuitively as the length of $x$ and $y$ concatenated together. In this project, it has been chosen to use the formula (\ref{eq:d1}) to evaluate the distance between files.
 \end{document}

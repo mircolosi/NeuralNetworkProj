@@ -1,7 +1,7 @@
 clc; clear all; close all;
 
 disp('Loading training matrix');
-SM = load('new_born_SM.mat');
+SM = load('ST_SM.mat');
 SM = SM.SM3;
 
 %% Retrieving the name of the files
@@ -42,4 +42,5 @@ X_new = horzcat(X_new,N_new);
 
 %% K-NN
 [dist_vec, labels] = kNNSimilaritySearch( X_new, X, Y, SM, 3 )
+% [dist_vec, labels] = kNNSimilaritySearch_REV( X_new, X, Y, SM, 3 )
 
