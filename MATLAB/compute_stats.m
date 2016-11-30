@@ -57,17 +57,22 @@ CM_st_7 = confusionmat(Y_truth, pred_labels_ST_7)
 CM_st_5 = confusionmat(Y_truth, pred_labels_ST_5)
 CM_st_3 = confusionmat(Y_truth, pred_labels_ST_3)
 
+targets = zeros(length(authors),length(dataset_size));
+for i = 1:length(authors)
+    targets(i,:) = strcmp(authors(i), Y_truth);
+end
+
 % PLOTS
-% figure('Name','CM_full_7');
-% plotconfusion(Y_truth,pred_labels_FULL_7);
-% figure('Name','CM_full_5');
-% plotconfusion(Y_truth,pred_labels_FULL_5);
-% figure('Name','CM_full_3');
-% plotconfusion(Y_truth,pred_labels_FULL_3);
-% 
-% figure('Name','CM_st_7');
-% plotconfusion(Y_truth,pred_labels_ST_7);
-% figure('Name','CM_st_5');
-% plotconfusion(Y_truth,pred_labels_ST_5);
-% figure('Name','CM_st_3');
-% plotconfusion(Y_truth,pred_labels_ST_3);
+figure('Name','CM_full_7');
+plotconfusion(Y_truth,pred_labels_FULL_7);
+figure('Name','CM_full_5');
+plotconfusion(Y_truth,pred_labels_FULL_5);
+figure('Name','CM_full_3');
+plotconfusion(Y_truth,pred_labels_FULL_3);
+
+figure('Name','CM_st_7');
+plotconfusion(Y_truth,pred_labels_ST_7);
+figure('Name','CM_st_5');
+plotconfusion(Y_truth,pred_labels_ST_5);
+figure('Name','CM_st_3');
+plotconfusion(Y_truth,pred_labels_ST_3);
