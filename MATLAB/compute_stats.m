@@ -124,20 +124,38 @@ recall = @(confusionMat) diag(confusionMat)./sum(confusionMat,1)';
 
 precision_full_7 =  precision(CM_full_7);
 recall_full_7 =     recall(CM_full_7);
+mean_precision_full_7 = mean(precision_full_7);
+   mean_recall_full_7 =    mean(recall_full_7);
 
 precision_full_5 =  precision(CM_full_5);
 recall_full_5 =     recall(CM_full_5);
-
+mean_precision_full_5 = mean(precision_full_5);
+   mean_recall_full_5 =    mean(recall_full_5);
+   
 precision_full_3 =  precision(CM_full_3);
 recall_full_3 =     recall(CM_full_3);
+mean_precision_full_3 = mean(precision_full_3);
+   mean_recall_full_3 =    mean(recall_full_3);
+   
+global_precision_full_mean = mean([mean_precision_full_7, mean_precision_full_5, mean_precision_full_3])
+global_recall_full_mean = mean([mean_recall_full_7, mean_recall_full_5, mean_recall_full_3])
 
 precision_st_7 =  precision(CM_st_7);
 recall_st_7 =     recall(CM_st_7);
+mean_precision_st_7 = mean(precision_st_7);
+   mean_recall_st_7 =    mean(recall_st_7);
 
 precision_st_5 =  precision(CM_st_5);
 recall_st_5 =     recall(CM_st_5);
+mean_precision_st_5 = mean(precision_st_5);
+   mean_recall_st_5 =    mean(recall_st_5);
 
 precision_st_3 =  precision(CM_st_3);
 recall_st_3 =     recall(CM_st_3);
+mean_precision_st_3 = mean(precision_st_3);
+   mean_recall_st_3 =    mean(recall_st_3);
+
+global_precision_st_mean = mean([mean_precision_st_7, mean_precision_st_5, mean_precision_st_3])
+global_recall_st_mean = mean([mean_recall_st_7, mean_recall_st_5, mean_recall_st_3])
 
 
