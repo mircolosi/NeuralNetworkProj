@@ -37,7 +37,7 @@
 	
 	In this paper, instead, it has been used a more general approach: it has been designed and developed a mechanism that measures the similarity between tracks and, given a new instance returns the author which mostly suits that instance - chosen between the authors available in the training set. To do that, we used a \textit{universal} similarity metric based on \textbf{Kolmogorov complexity} \cite{kolmogorov}. The peculiarity of this approach is that can be employed potentially on every kind of file with no modification and without the need of time expensive calculations for extracting audio features. Then, once that a similarity measure is retrieved, a simple \textit{k-NN} has been employed to classify new instances.
 	
-	The remaining of the document is organized as follows: in Section 2 a brief overview of the related approaches is given; Section 3 describes the methodology used in this project together with some results; finally in Section 4 are reported conclusions and possible future improvements.
+	The document is organised as follows: in Section 2 a brief overview of the related approaches is given; Section 3 describes the methodology used in this project together with some results; finally in Section 4 are reported conclusions and possible future improvements.
 	
 	
 	\section{Related works}
@@ -71,7 +71,7 @@
 	
 	An approach very similar to what it has been developed in this project is used by \textbf{Cataltepe et al.} \cite{catelape}: they used a combined approach that takes the advantage both of MIDI \textit{and} audio features - those ones evaluated after a conversion into simple audio files of the MIDI pieces. As it is possible to appreciate in \hyperref[fig:audio_and_NCD]{Figure 1}, in order to classify the instances, they used the \textit{NCD}  (Normalized Compression Distance) - which is based on the same concept of the \textit{similarity measure} employed in this project - and then a k-NN classifier together with another classifier that acts on audio features. The final vote takes is represented by the weighted majority vote resulting from the two classifiers.
 	
-	Now that it has been completed an overview of the other approaches used by scientific community, it is possible to better analyse the techniques used in this project.
+	Concluded this preliminary phase, the next Session will propose a deeper analysis on what it has been developed in this project.
 	
 	
 	\section{Classification using Similarity Metric}
@@ -104,20 +104,7 @@
 		\item \textit{Multi-tracks} songs has been converted to single track, keeping only the highest pitch note between simultaneous notes.
 	\end{itemize}
 	
-	\begin{table}[!h]
-		\centering
-		\label{tab:stats}
-		\begin{tabular}{| c | c | c |}
-			\hline
-			& Precision & Recall \\ \hline
-			$\mathcal{D}_1$ & 0.1514 & 0.1136 \\ 
-			$\mathcal{D}_2$ & 0.2083 & 0.1907 \\ 
-			\hline
-		\end{tabular}
-		\caption{Precision and recall on the two datasets. It is possible to appreciate the boost in performances given by the preprocessing phase.}
-	\end{table}
-	
-	After this preprocessing, it has been evaluated the similarity metric - according to (\ref{eq:d1}) - for the training set of both $\mathcal{D}_1$ and $\mathcal{D}_2$, obtaining a $(360 \times 360)$ matrix in which all the distances are stored, applying \hyperref[alg_1]{Algorithm 1}.
+	After this preprocessing, it has been evaluated the similarity metric - according to (\ref{eq:d1}) - for both training sets $\mathcal{D}_1^{train}$ and $\mathcal{D}_2^{train}$, obtaining a $(360 \times 360)$ matrix in which all the distances are stored, applying \hyperref[alg_1]{Algorithm 1}.
 	
 	\begin{algorithm}[!h]
 		\KwData{$\mathcal{D}_j$}
@@ -145,14 +132,22 @@
 		\caption{Evaluate distances on MIDI instances using the Similarity Metric}
 	\end{algorithm}
 	
-	After this phase, it has been evaluated the similarity metric between each new instance of the test sets and the training files, in order to generate a \textit{predicted} author label using k-NN for each new MIDI file. Finally, we collected some statistics for both the datasets, i.e. \textit{precision} and \textit{recall} of the method - shown in \hyperref[tab:stats]{Table 1} - and \textit{confusion matrices} provided in \hyperref[fig:cm]{Figure 2}. It is possible to appreciate how the preprocessing phase enhance the classification results with respect to the raw MIDI dataset. However, this method has some poor results compared to other state-of-the-art systems and this because it is design to co-work together with other feature-based classification or to preform a pre-clustering of the raw dataset.
+	Therefore, it has been evaluated the similarity metric between each new instance of the test sets and the training files, in order to generate for each new MIDI file a \textit{prediction} of its author label using k-NN. Finally, we collected some statistics for both the datasets, i.e. \textit{precision} and \textit{recall} of the method - shown in \hyperref[tab:stats]{Table 1} - and \textit{confusion matrices} provided in \hyperref[fig:cm]{Figure 2}. It is possible to appreciate how the preprocessing phase enhance the classification results with respect to the raw MIDI dataset. 
 	
-	\begin{figure}[]
+	\begin{table}[!hf]
 		\centering
-		\label{fig:cm}
-		\includegraphics[scale=0.52]{misc/collage_dim.png}
-		\caption{Confusion matrices on both the datasets using k-NN with $k = \left[3,5,7\right]$ - shown in rows 1,2 and 3 respectively. Left column represents the confusion matrices obtained from the raw dataset $\mathcal{D}_1$, instead the right column embeds the confusion matrices of the preprocessed dataset $\mathcal{D}_2$. Warmer colours indicate higher values.}
-	\end{figure}
+		\label{tab:stats}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			& Precision & Recall \\ \hline
+			$\mathcal{D}_1$ & 0.1514 & 0.1136 \\ 
+			$\mathcal{D}_2$ & 0.2083 & 0.1907 \\ 
+			\hline
+		\end{tabular}
+		\caption{Precision and recall on the two datasets. It is possible to appreciate the boost in performances given by the preprocessing phase.}
+	\end{table}
+	
+	However, this method has some poor results compared to other state-of-the-art systems and this because it is designed to co-work with other feature-based classification or to preform a pre-clustering of the raw dataset.
 	
 	\section{Conclusions and future work}
 	\lettrine[nindent=0em,lines=2]{I}{}n this project it has been developed a classification system for MIDI file, based on the usage of k-NN together with the \textit{Similarity Metric}. This last one is based on the concept of \textbf{Kolmogorov complexity} of a file: basically this can be approximated evaluating the length of the file in it's ultimate compression. This can be approximated using standard industrial compressors - e.g. \textit{zip} - calculating the \textit{Normalized Compressed Distance} (NCD). 
@@ -164,7 +159,15 @@
 	It has been performed the same experiment also on a dataset cloned from the standard one, but preprocessed according to \cite{melody_class}. It has been noticed that the preprocessing is useful to obtain better results in the classification phase.
 	
 	What has been noticed is that a classifier based \textit{only} on the Similarity Measure is too weak to perform state-of-the-art classification of MIDI file. Thus, it must be enforced exploiting other informations available, coming either from MIDI parameters or from audio features. Hence, one possible future development could be an extension of this classifier using one of the above-mentioned approaches.
+
+	\begin{figure}[!ht]
+		\centering
+		\label{fig:cm}
+		\includegraphics[scale=0.54]{misc/collage_dim.png}
+		\caption{Confusion matrices on both the datasets using k-NN with $k = \left[3,5,7\right]$ - shown in rows 1,2 and 3 respectively. Left column represents the confusion matrices obtained from the raw dataset $\mathcal{D}_1$, instead the right column embeds the confusion matrices of the preprocessed dataset $\mathcal{D}_2$. Warmer colours indicate higher values.}
+	\end{figure}
 	
+	\clearpage
 	\begin{thebibliography}{1}
 		\bibitem{midi} MIDI page on Wikipedia:\\
 		\href{https://en.wikipedia.org/wiki/MIDI}{https://en.wikipedia.org/wiki/MIDI}

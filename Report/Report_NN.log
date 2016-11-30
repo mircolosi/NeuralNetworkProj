@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2016.9.13)  30 NOV 2016 17:03
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2016.9.13)  30 NOV 2016 18:47
  restricted \write18 enabled.
 **Report_NN.tex
 (./Report_NN.tex
@@ -513,66 +513,64 @@ has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.69 	\end{itemize}
-                  <./misc/audio_and_ncd.png>] [3]
+                  <./misc/audio_and_ncd.png>] [3] [4LuaTeX warning (ext4): desti
+nation with the same identifier (name{algocf.1}) has been already used, duplicat
+e ignored
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 150.
-
-<misc/collage_dim.png, id=80, 665.48625pt x 899.36pt>
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.136 
+    ] <misc/collage_dim.png, id=93, 665.48625pt x 899.36pt>
 File: misc/collage_dim.png Graphic file (type png)
 
 <use misc/collage_dim.png>
-Package pdftex.def Info: misc/collage_dim.png used on input line 153.
-(pdftex.def)             Requested size: 346.05484pt x 467.66989pt.
+Package pdftex.def Info: misc/collage_dim.png used on input line 166.
+(pdftex.def)             Requested size: 359.35722pt x 485.64717pt.
 
-Overfull \hbox (1.05484pt too wide) in paragraph at lines 153--154
+Overfull \hbox (14.35722pt too wide) in paragraph at lines 166--167
  [][][] 
  []
 
-[4LuaTeX warning (ext4): destination with the same identifier (name{table.1}) ha
+[5LuaTeX warning (ext4): destination with the same identifier (name{table.1}) ha
 s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.161 
-    ] [5LuaTeX warning (ext4): destination with the same identifier (name{figur
-e.2}) has been already used, duplicate ignored
+l.170 	\clearpage
+               ]
+
+LaTeX Warning: Text page 6 contains only floats.
+
+[6LuaTeX warning (ext4): destination with the same identifier (name{figure.2}) h
+as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.161 
-     <./misc/collage_dim.png>] [6LuaTeX warning (ext4): destination with the sam
-e identifier (name{algocf.1}) has been already used, duplicate ignored
+l.170 	\clearpage
+                <./misc/collage_dim.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
+ [7
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.176 		\bibitem{torver}
-                       Basili, Roberto, Alfredo Serafini, and Armando Stella...]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 185.
-
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 185.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
  (./Report_NN.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 185.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 185.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `Report_NN.out' has not changed.
 (rerunfilecheck)             Checksum: 0BBB7EA545777C6609418FF90C128D64;396.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 185.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 188.
  )
 
 Here is how much of LuaTeX's memory you used:
  9190 strings out of 493803
  100000,552014 words of node,token memory allocated
- 489 words of node memory still in use:
+ 490 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 1 glyph, 60 glue_spec, 1 write, 4 p
 df_colorstack nodes
-   avail lists: 1:1,2:25,3:128,4:1273,5:268,6:3525,7:111,8:21,9:286,10:305
+   avail lists: 1:1,2:24,3:123,4:815,5:218,6:2718,7:36,8:14,9:218,10:261
  12561 multiletter control sequences out of 65536+600000
  52 fonts using 2054759 bytes
- 34i,16n,30p,843b,470s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 34i,16n,30p,802b,470s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/
@@ -585,10 +583,10 @@ amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_NN.pdf (7 pages, 245991 bytes).
+Output written on Report_NN.pdf (7 pages, 246681 bytes).
 
-PDF statistics: 157 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+PDF statistics: 158 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
  29 named destinations out of 1000 (max. 131072)
  49 words of extra memory for PDF output out of 10000 (max. 10000000)
 
