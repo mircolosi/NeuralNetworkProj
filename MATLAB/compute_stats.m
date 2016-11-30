@@ -58,57 +58,86 @@ CM_st_5 = confusionmat(Y_truth, pred_labels_ST_5)
 CM_st_3 = confusionmat(Y_truth, pred_labels_ST_3)
 
 % PLOTS
-f = figure('Name','CM_full_7');
-imagesc(CM_full_7)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_full_7.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
+wanna_plot = false;
+if wanna_plot
+    f = figure('Name','CM_full_7');
+    imagesc(CM_full_7)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_full_7.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+    
+    f = figure('Name','CM_full_5');
+    imagesc(CM_full_5)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_full_5.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+    
+    f = figure('Name','CM_full_3');
+    imagesc(CM_full_3)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_full_3.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+    
+    f = figure('Name','CM_st_7');
+    imagesc(CM_st_7)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_st_7.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+    
+    f = figure('Name','CM_st_5');
+    imagesc(CM_st_5)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_st_5.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+    
+    f = figure('Name','CM_st_3');
+    imagesc(CM_st_3)
+    set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
+    set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
+    set(gca,'DataAspectRatio',[1 1 1]);
+    f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
+    print('CM_st_3.png', '-dpng');
+    % colormap jet % # to change the default grayscale colormap
+end
 
-f = figure('Name','CM_full_5');
-imagesc(CM_full_5)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_full_5.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
+%% Precision and recall
 
-f = figure('Name','CM_full_3');
-imagesc(CM_full_3)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_full_3.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
+precision = @(confusionMat) diag(confusionMat)./sum(confusionMat,2);
 
-f = figure('Name','CM_st_7');
-imagesc(CM_st_7)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_st_7.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
+recall = @(confusionMat) diag(confusionMat)./sum(confusionMat,1)';
 
-f = figure('Name','CM_st_5');
-imagesc(CM_st_5)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_st_5.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
 
-f = figure('Name','CM_st_3');
-imagesc(CM_st_3)
-set(gca, 'XTick', [1:1:6],'XTickLabel',authors);
-set(gca, 'YTick', [1:1:6],'YTickLabel',authors);
-set(gca,'DataAspectRatio',[1 1 1]);
-f.Position = [f.Position(1), f.Position(2),f.Position(3)*2,f.Position(4)*2];
-print('CM_st_3.png', '-dpng');
-% colormap jet % # to change the default grayscale colormap 
+precision_full_7 =  precision(CM_full_7);
+recall_full_7 =     recall(CM_full_7);
+
+precision_full_5 =  precision(CM_full_5);
+recall_full_5 =     recall(CM_full_5);
+
+precision_full_3 =  precision(CM_full_3);
+recall_full_3 =     recall(CM_full_3);
+
+precision_st_7 =  precision(CM_st_7);
+recall_st_7 =     recall(CM_st_7);
+
+precision_st_5 =  precision(CM_st_5);
+recall_st_5 =     recall(CM_st_5);
+
+precision_st_3 =  precision(CM_st_3);
+recall_st_3 =     recall(CM_st_3);
+
 
