@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2016.9.13)  29 NOV 2016 19:16
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2016.9.13)  30 NOV 2016 13:20
  restricted \write18 enabled.
 **Report_NN.tex
 (./Report_NN.tex
@@ -345,24 +345,78 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmargin=\skip58
 \droptitle=\skip59
 )
+(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count122
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip60
+\skiplinenumber=\skip61
+\skiprule=\skip62
+\skiphlne=\skip63
+\skiptext=\skip64
+\skiplength=\skip65
+\algomargin=\skip66
+\skipalgocfslide=\skip67
+\algowidth=\dimen135
+\inoutsize=\dimen136
+\inoutindent=\dimen137
+\interspacetitleruled=\dimen138
+\interspacealgoruled=\dimen139
+\interspacetitleboxruled=\dimen140
+\algocf@inoutbox=\box31
+\algocf@inputbox=\box32
+\AlCapSkip=\skip68
+\AlCapHSkip=\skip69
+\algoskipindent=\skip70
+\algocf@nlbox=\box33
+\algocf@hangingbox=\box34
+\algocf@untilbox=\box35
+\algocf@skipuntil=\skip71
+\algocf@capbox=\box36
+\algoheightruledefault=\skip72
+\algoheightrule=\skip73
+\algotitleheightruledefault=\skip74
+\algotitleheightrule=\skip75
+\c@algocfline=\count123
+\c@algocfproc=\count124
+\c@algocf=\count125
+\algocf@algoframe=\box37
+\algocf@algobox=\box38
+) (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
+Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
+\c@lips@count=\count126
+)
 (/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.sty
 File: lettrine.sty 2013/03/14 v1.64 (Daniel Flipo)
-\c@DefaultLines=\count122
-\DefaultFindent=\dimen135
-\DefaultNindent=\dimen136
-\DefaultSlope=\dimen137
-\L@lbox=\box31
-\L@tbox=\box32
-\c@L@lines=\count123
-\L@Pindent=\dimen138
-\L@Findent=\dimen139
-\L@Nindent=\dimen140
-\L@lraise=\dimen141
-\L@first=\dimen142
-\L@next=\dimen143
-\L@slope=\dimen144
-\L@height=\dimen145
-\LettrineWidth=\dimen146
+\c@DefaultLines=\count127
+\DefaultFindent=\dimen141
+\DefaultNindent=\dimen142
+\DefaultSlope=\dimen143
+\L@lbox=\box39
+\L@tbox=\box40
+\c@L@lines=\count128
+\L@Pindent=\dimen144
+\L@Findent=\dimen145
+\L@Nindent=\dimen146
+\L@lraise=\dimen147
+\L@first=\dimen148
+\L@next=\dimen149
+\L@slope=\dimen150
+\L@height=\dimen151
+\LettrineWidth=\dimen152
 
 Loading lettrine.cfg
 (/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.cfg))
@@ -375,35 +429,35 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 Package color Info: Driver file: pdftex.def on input line 130.
 )
 (./Report_NN.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
  (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count124
-\scratchdimen=\dimen147
-\scratchbox=\box33
-\nofMPsegments=\count125
-\nofMParguments=\count126
+\scratchcounter=\count129
+\scratchdimen=\dimen153
+\scratchbox=\box41
+\nofMPsegments=\count130
+\nofMParguments=\count131
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count127
-\MPscratchDim=\dimen148
-\MPnumerator=\count128
-\makeMPintoPDFobject=\count129
+\MPscratchCnt=\count132
+\MPscratchDim=\dimen154
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks30
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -420,8 +474,8 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 ))
-\AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 26.
+\AtBeginShipoutBox=\box42
+Package hyperref Info: Link coloring OFF on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -429,73 +483,166 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count130
+\c@section@level=\count135
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 29.
+LaTeX Info: Redefining \pageref on input line 29.
+LaTeX Info: Redefining \nameref on input line 29.
 
 (./Report_NN.out) (./Report_NN.out)
 \@outlinefile=\write3
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 48.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
 
-<misc/audio_and_ncd.png, id=33, 537.00626pt x 536.0025pt>
+<misc/audio_and_ncd.png, id=41, 537.00626pt x 536.0025pt>
 File: misc/audio_and_ncd.png Graphic file (type png)
 
 <use misc/audio_and_ncd.png>
-Package pdftex.def Info: misc/audio_and_ncd.png used on input line 56.
+Package pdftex.def Info: misc/audio_and_ncd.png used on input line 59.
 (pdftex.def)             Requested size: 268.50247pt x 268.0006pt.
  [2LuaTeX warning (ext4): destination with the same identifier (name{figure.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.63 		\item \textbf
+l.66 		\item \textbf
                   {Lead}: a melodic line, e.g. vocal performance or guitar s... 
 <./misc/audio_and_ncd.png>] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<misc/CM_st_7.png, id=62, 843.15pt x 497.6994pt>
+File: misc/CM_st_7.png Graphic file (type png)
+ <use misc/CM_st_7.png>
+Package pdftex.def Info: misc/CM_st_7.png used on input line 153.
+(pdftex.def)             Requested size: 252.94695pt x 149.31096pt.
+
+[4LuaTeX warning (ext4): destination with the same identifier (name{table.1}) ha
+s been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.155 	\end{figure}
+                 ] [5LuaTeX warning (ext4): destination with the same identifier
+ (name{algocf.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.158 	\lipsum[1-3]
+                 LuaTeX warning (ext4): destination with the same identifier (na
+me{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.158 	\lipsum[1-3]
+                  <./misc/CM_st_7.png (PNG copy)>]
+
+! LaTeX Error: \begin{thebibliography} on input line 160 ended by \end{]}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.161 	\end
+         {thebibliography}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.161 	\end
+         {thebibliography}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.161 	\end
+         {thebibliography}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Too many }'s.
+\@settodim #1#2#3t-\setbox \@tempboxa \hbox {{#3}
+                                                 }#2#1\@tempboxa \setbox \@t...
+l.161 	\end
+         {thebibliography}
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+! Too many }'s.
+\@settodim #1#2#3t-\setbox \@tempboxa \hbox {{#3}}
+                                                  #2#1\@tempboxa \setbox \@t...
+l.161 	\end
+         {thebibliography}
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 162.
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.162 \end{document}
+                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 162.
  (./Report_NN.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 92.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 162.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 162.
 Package rerunfilecheck Info: File `Report_NN.out' has not changed.
-(rerunfilecheck)             Checksum: FDFD740C28875A29DEF416E11222D42F;265.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
+(rerunfilecheck)             Checksum: 0BBB7EA545777C6609418FF90C128D64;396.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 162.
  )
 
 Here is how much of LuaTeX's memory you used:
- 7607 strings out of 493803
+ 9177 strings out of 493803
  100000,552014 words of node,token memory allocated
- 414 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 1 glyph, 48 glue_spec, 1 write, 4 p
-df_colorstack nodes
-   avail lists: 2:25,3:103,4:828,5:213,6:2777,7:44,8:7,9:145,10:249
- 11026 multiletter control sequences out of 65536+600000
+ 488 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 1 glyph, 61 glue_spec, 1 shape, 1 w
+rite, 4 pdf_colorstack nodes
+   avail lists: 1:1,2:25,3:125,4:1193,5:280,6:3065,7:117,8:20,9:331,10:253
+ 12556 multiletter control sequences out of 65536+600000
  52 fonts using 2054759 bytes
- 34i,10n,28p,975b,442s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 34i,16n,30p,975b,470s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_NN.pdf (4 pages, 167205 bytes).
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Report_NN.pdf (6 pages, 209648 bytes).
 
-PDF statistics: 94 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 131072)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 132 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 131072)
+ 49 words of extra memory for PDF output out of 10000 (max. 10000000)
 

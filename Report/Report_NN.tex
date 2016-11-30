@@ -11,7 +11,10 @@
 \usepackage{subfigure}
 \usepackage{enumitem}
 \usepackage{titling}
+\usepackage{algorithm2e}
+\usepackage{lipsum}
 
+ 
 % Font and spacing
 
 \usepackage{lettrine}
@@ -89,4 +92,70 @@
 	\end{align}
 	
 	Both definitions require the \textit{conditional complexity} $K(x|y)$ but this quantity cannot be evaluated in close form. Thus, the conditional complexity is approximated as $K(x|y) \approx K(x,y) - K(y)$, where $K(x,y)$ is computed very intuitively as the length of $x$ and $y$ concatenated together. In this project, it has been chosen to use the formula (\ref{eq:d1}) to evaluate the distance between files.
+	
+	\subsection{Experimental results}
+	In this project we implemented a k-NN classifier to assign the author to MIDI files using the distance described by (\ref{eq:d1}). 
+	
+	It has been used a dataset of $600$ MIDI files divided into $6$ authors, each one with $100$ entries; the chosen composers are the following: \textit{Bach}, \textit{Beethoven}, \textit{Haendel}, \textit{Mozart}, \textit{Schubert} and \textit{Vivaldi}. The whole dataset has been split into \textbf{training-set} - $60$ files for each author -  and \textbf{test-set} - $40$ songs for each composer. 
+	
+	The project has been developed entirely in MATLAB. As first thing we cloned the dataset - $\mathcal{D}_1$ and $\mathcal{D}_2$ will indicate respectively original and cloned dataset. Then, $\mathcal{D}_2$ has been pre-processed according to the work of \textit{Li et al.} [ref: Li, Ming, and Ronan Sleep. "Melody classification using a similarity metric based on Kolmogorov complexity." Sound and Music Computing 2012 (2004).]:
+	\begin{itemize}
+		\item \textit{Timing} and \textit{expression} informations of each song has been removed;
+		\item \textit{Multi-tracks} songs has been converted to single track, keeping only the highest pitch note between simultaneous notes.
+	\end{itemize}
+	
+	\begin{table}[!h]
+		\centering
+		\label{tab:stats}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			& Precision & Recall \\ \hline
+			$\mathcal{D}_1$ & 0.1514 & 0.1136 \\ 
+			$\mathcal{D}_2$ & 0.2083 & 0.1907 \\ 
+			\hline
+		\end{tabular}
+		\caption{Precision and recall on the two datasets. It is possible to appreciate the boost in performances given by the preprocessing phase.}
+	\end{table}
+	
+	After this preprocessing, it has been evaluated the similarity metric - according to (\ref{eq:d1}) - for the training set of both $\mathcal{D}_1$ and $\mathcal{D}_2$, obtaining a $(360 \times 360)$ matrix in which all the distances are stored, applying \hyperref[alg_1]{Algorithm 1}.
+	
+	\begin{algorithm}[!h]
+		\KwData{$\mathcal{D}_j$}
+		\KwResult{$SM_j$ a $(360\times360)$ matrix with all the distances.}
+		\ForEach{$x_k \in \mathcal{D}_j$}
+		{
+			Convert $x_k$ into a text file $\bar{x}_k$\\
+			Zip $\bar{x}_k$ obtaining $\bar{x}_k^{zip}$\\
+			Evaluate the length $K\left(\bar{x}_k^{zip}\right)$\\
+			\ForEach{$x_h \in \mathcal{D}_j$}
+			{
+				Convert $x_h$ into a text file $\bar{x}_h$\\
+				Zip $\bar{x}_h$ obtaining $\bar{x}_h^{zip}$\\
+				Evaluate length $K\left(\bar{x}_h^{zip}\right)$\\
+				
+				\vspace{5px}
+				Create concatenated files $\bar{x}_{kh}$ and $\bar{x}_{hk}$\\
+				Zip $\bar{x}_{kh}$ and $\bar{x}_{hk}$ obtaining $\bar{x}_{hk}^{zip}$ and $\bar{x}_{kh}^{zip}$\\
+				Evaluate the lengths $K\left(\bar{x}_{kh}^{zip}\right)$ and $K\left(\bar{x}_{hk}^{zip}\right)$\\
+				\vspace{5px}
+				Evalaute $d_{kh}$ and $d_{hk}$ according to (\ref{eq:d1})}}
+
+		\vspace{10px}
+		\label{alg_1}
+		\caption{Evaluate distances on MIDI instances using the Similarity Metric}
+	\end{algorithm}
+	
+	After this phase, it has been evaluated the similarity metric between each new instance of the test sets and the training files, in order to generate a \textit{predicted} author label using k-NN for each new MIDI file. Finally, we collected some statistics for both the datasets, i.e. \textit{precision} and \textit{recall} of the method - shown in \hyperref[tab:stats]{Table 1} - and \textit{confusion matrices} provided in \hyperref[fig:cm]{Figure 2}. It is possible to appreciate how the preprocessing phase enhance the classification results with respect to the raw MIDI dataset. However, this method has some poor results compared to other state-of-the-art systems and this because it is design to co-work together with other feature-based classification or to preform a pre-clustering of the raw dataset.
+	
+	\begin{figure}[!h]
+		\centering
+		\label{fig:cm}
+		\includegraphics[scale=0.3]{misc/CM_st_7.png}
+		\caption{Confusion matrices on both the datasets using k-NN with $k = \left[3,5,7\right]$}
+	\end{figure}
+	
+	\section{Conclusions and future work}
+	\lipsum[1-3]
+	
+
 \end{document}
